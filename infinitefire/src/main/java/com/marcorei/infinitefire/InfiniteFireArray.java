@@ -159,16 +159,9 @@ public class InfiniteFireArray<T> {
      * @param position Position of the item in the array.
      * @return A snapshot with the key and the typed value.
      */
-    public InfiniteFireSnapshot<T> getItem(int position) {
+    public InfiniteFireSnapshot<Object> getItem(int position) {
         DataSnapshot dataSnapshot = dataSnapshots.get(position);
-        T value;
-        try {
-            value = dataSnapshot.getValue(ItemClass);
-        }
-        catch(DatabaseException exception) {
-            value = null;
-        }
-        return new InfiniteFireSnapshot<>(dataSnapshot.getKey(), value);
+        return new InfiniteFireSnapshot<>(dataSnapshot.getKey(), dataSnapshot.getValue());
     }
 
     /**
