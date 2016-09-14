@@ -95,5 +95,12 @@ public abstract class InfiniteFireRecyclerViewAdapter<T> extends RecyclerView.Ad
     public long getItemId(int position) {
         return position;
     }
+
+    /**
+     * @return Get the item of current position.
+     */
+    public InfiniteFireSnapshot<T> getItem(int position) {
+        return snapshots.getItem(position - indexOffset);
+    }
 }
 
